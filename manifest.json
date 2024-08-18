@@ -20,5 +20,16 @@
 		"activeTab",
 		"storage",
 		"tabs"
-	]
+	],
+	"content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"],
+      "css": ["styles.css"]
+    }
+  ],
+	"options_ui": {
+    "page": "options.html",
+    "open_in_tab": true
+  }
 }
