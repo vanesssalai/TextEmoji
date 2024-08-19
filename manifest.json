@@ -1,6 +1,6 @@
 {
   "name": "Text Emoji",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Replace words with text emojis as you type",
   "manifest_version": 3,
   "permissions": [
