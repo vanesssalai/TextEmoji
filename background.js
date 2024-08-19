@@ -27,3 +27,28 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
         return true;
     }
 });
+
+function sendEmojisToContentScript(tabId) {
+    chrome.tabs.sendMessage(tabId, { action: "ping" }, response => {
+        if (chrome.runtime.lastError) {
+            setTimeout(() => sendEmojisToContentScript(tabId), 200);
+        } else {
+            chrome.storage.sync.get('emojis', (data) => {
+                chrome.tabs.sendMessage(tabId, {
+                    action: "updateEmojis",
+                    emojis: data.emojis || defaultEmojis
+                });
+            });
+        }
+    });
+}
+
+chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
+    if (changeInfo.status === 'complete') {
+        sendEmojisToContentScript(tabId);
+    }
+});
+
+chrome.tabs.onActivated.addListener((activeInfo) => {
+    sendEmojisToContentScript(activeInfo.tabId);
+});

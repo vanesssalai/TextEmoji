@@ -1,35 +1,37 @@
 {
-	"name": "Text Emoji",
-	"description": "Replace words with text emojis as you type",
-	"version": "0.0.1",
-	"manifest_version": 3,
-	"background": {
-		"service_worker": "background.js"
-	},
-	"action": {
-		"default_icon": {
-			"16": "assets/icon-16.png",
-			"24": "assets/icon-24.png",
-			"32": "assets/icon-32.png",
-			"48": "assets/icon-48.png",
-			"128": "assets/icon-128.png"    
-		}
-	},
-	"host_permissions": ["<all_urls>"],
-	"permissions": [
-		"activeTab",
-		"storage",
-		"tabs"
-	],
-	"content_scripts": [
+  "name": "Text Emoji",
+  "version": "1.0.0",
+  "description": "Replace words with text emojis as you type",
+  "manifest_version": 3,
+  "permissions": [
+    "storage",
+    "activeTab"
+  ],
+  "host_permissions": [
+    "<all_urls>"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
     {
       "matches": ["<all_urls>"],
       "js": ["content.js"],
       "css": ["styles.css"]
     }
   ],
-	"options_ui": {
-    "page": "options.html",
-    "open_in_tab": true
+  "options_page": "options.html",
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "assets/icon-16.png",
+      "48": "assets/icon-48.png",
+      "128": "assets/icon-128.png"
+    }
+  },
+  "icons": {
+    "16": "assets/icon-16.png",
+    "48": "assets/icon-48.png",
+    "128": "assets/icon-128.png"
   }
 }
