@@ -14,8 +14,7 @@ git clone https://github.com/vanesssalai/TextEmoji.git
 2. Upload onto Google Chrome Extensions
 ```
 Go your Google Chrome and head to the extensions tab in the header (Extensions Icon -> Manage Extensions)
-```
-```
+
 Click on Load unpacked and select the folder for Text Emoji
 
 Make sure that it is active
